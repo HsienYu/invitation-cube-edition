@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>{{myTitle}}</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"
+        media="screen" title="no title" charset="utf-8"> -->
+    <!-- <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900' rel='stylesheet' type='text/css'> -->
+    <link rel="stylesheet" href="/static/style.css" media="screen" title="no title" charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/index.js"></script>
+    <script>
+        var chatMessages_a = [];
+        var chatMessages_b = [];
+        var chatMessages_c = [];
+        var chatMessages_d = [];
+        var chatMessages_e = [];
+        var chatMessages_f = [];
+        var textObjs = ['', '', '', '', '', ''];
+
+        var refresh = function() {
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1:8080/message",
+                dataType: 'JSON',
+                success: function(response) {
+                    //console.log(typeof response["Ww-EClrbOrE"].datetime);
+                    //document.getElementById('datetime').innerHTML = response["JVU1Q5GgGY0"].datetime;
+                    //document.getElementById('name').innerHTML = response["JVU1Q5GgGY0"].author;
+                    if (typeof response["Ww-EClrbOrE"] === "object" || typeof response["Ww-EClrbOrE"] !== "undefined") {
+                        textObjs[0] = response["Ww-EClrbOrE"].datetime + " - " + response["Ww-EClrbOrE"].author + " : " + response["Ww-EClrbOrE"].message;
+                    } else {
+                        textObjs[0] = "live chat is not available";
+                    }
+
+                    if (typeof response["coYw-eVU0Ks"] === "object" || typeof response["coYw-eVU0Ks"] !== "undefined") {
+                        textObjs[1] = response["coYw-eVU0Ks"].datetime + " - " + response["coYw-eVU0Ks"].author + " : " + response["coYw-eVU0Ks"].message;
+                    } else {
+                        textObjs[1] = "live chat is not available";
+                    }
+
+                    if (typeof response["RaIJ767Bj_M"] === "object" || typeof response["RaIJ767Bj_M"] !== "undefined") {
+                        textObjs[2] = response["RaIJ767Bj_M"].datetime + " - " + response["RaIJ767Bj_M"].author + " : " + response["RaIJ767Bj_M"].message;
+                    } else {
+                        textObjs[2] = "live chat is not available";
+                    }
+
+                    if (typeof response["Hu1FkdAOws0"] === "object" || typeof response["Hu1FkdAOws0"] !== "undefined") {
+                        textObjs[3] = response["Hu1FkdAOws0"].datetime + " - " + response["Hu1FkdAOws0"].author + " : " + response["Hu1FkdAOws0"].message;
+                    } else {
+                        textObjs[3] = "live chat is not available";
+                    }
+
+                    if (typeof response["4ZVUmEUFwaY"] === "object" || typeof response["4ZVUmEUFwaY"] !== "undefined") {
+                        textObjs[4] = response["4ZVUmEUFwaY"].datetime + " - " + response["4ZVUmEUFwaY"].author + " : " + response["4ZVUmEUFwaY"].message;
+                    } else {
+                        textObjs[4] = "live chat is not available";
+                    }
+
+                    if (typeof response["NMre6IAAAiU"] === "object" || typeof response["NMre6IAAAiU"] !== "undefined") {
+                        textObjs[5] = response["NMre6IAAAiU"].datetime + " - " + response["NMre6IAAAiU"].author + " : " + response["NMre6IAAAiU"].message;
+                    } else {
+                        textObjs[5] = "live chat is not available";
+                    }
+
+                },
+            })
+        }
+        setInterval("refresh()", 1000);
+
+        $(document).ready(function() {
+            $("#chatdiv_a").append(textObjs[0]);
+            $("#chatdiv_b").append(textObjs[1]);
+            $("#chatdiv_c").append(textObjs[2]);
+            $("#chatdiv_d").append(textObjs[3]);
+            $("#chatdiv_e").append(textObjs[4]);
+            $("#chatdiv_f").append(textObjs[5]);
+            setInterval(function addChatMessage() {
+                chatMessages_a.push(textObjs[0]);
+                chatMessages_b.push(textObjs[1]);
+                chatMessages_c.push(textObjs[2]);
+                chatMessages_d.push(textObjs[3]);
+                chatMessages_e.push(textObjs[4]);
+                chatMessages_f.push(textObjs[5]);
+            }, 1000);
+            setInterval(function showChatMessageAndScroll() {
+                var textdiv_a = $("#textdiv_a");
+                var chatdiv_a = $("#chatdiv_a");
+                var textdiv_b = $("#textdiv_b");
+                var chatdiv_b = $("#chatdiv_b");
+                var textdiv_c = $("#textdiv_c");
+                var chatdiv_c = $("#chatdiv_c");
+                var textdiv_d = $("#textdiv_d");
+                var chatdiv_d = $("#chatdiv_d");
+                var textdiv_e = $("#textdiv_e");
+                var chatdiv_e = $("#chatdiv_e");
+                var textdiv_f = $("#textdiv_f");
+                var chatdiv_f = $("#chatdiv_f");
+                textdiv_a.html("");
+                textdiv_b.html("");
+                textdiv_c.html("");
+                textdiv_d.html("");
+                textdiv_e.html("");
+                textdiv_f.html("");
+                $.each(chatMessages_a, function(i, e) {
+                    textdiv_a.append("<span>" + e + "</span><br/>");
+                });
+                $.each(chatMessages_b, function(i, e) {
+                    textdiv_b.append("<span>" + e + "</span><br/>");
+                });
+                $.each(chatMessages_c, function(i, e) {
+                    textdiv_c.append("<span>" + e + "</span><br/>");
+                });
+                $.each(chatMessages_d, function(i, e) {
+                    textdiv_d.append("<span>" + e + "</span><br/>");
+                });
+                $.each(chatMessages_e, function(i, e) {
+                    textdiv_e.append("<span>" + e + "</span><br/>");
+                });
+                $.each(chatMessages_f, function(i, e) {
+                    textdiv_f.append("<span>" + e + "</span><br/>");
+                });
+                //console.log(textdiv_a.height());
+                chatdiv_a.scrollTop(textdiv_a.outerHeight());
+                chatdiv_b.scrollTop(textdiv_b.outerHeight());
+                chatdiv_c.scrollTop(textdiv_c.outerHeight());
+                chatdiv_d.scrollTop(textdiv_d.outerHeight());
+                chatdiv_e.scrollTop(textdiv_e.outerHeight());
+                chatdiv_f.scrollTop(textdiv_f.outerHeight());
+            }, 1500);
+        });
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="chatdiv_a">
+            <div id="textdiv_a"></div>
+        </div>
+
+        <div id="chatdiv_b">
+            <div id="textdiv_b"></div>
+        </div>
+
+        <div id="chatdiv_c">
+            <div id="textdiv_c"></div>
+        </div>
+
+        <div id="chatdiv_d">
+            <div id="textdiv_d"></div>
+        </div>
+
+        <div id="chatdiv_e">
+            <div id="textdiv_e"></div>
+        </div>
+
+        <div id="chatdiv_f">
+            <div id="textdiv_f"></div>
+        </div>
+
+        <div id="buttons">
+            <div id='button'></div>
+        </div>
+    </div>
+
+    <div id="mobile-message">
+        <p>This project is not optimised for mobile. Please visit this link on your desktop.</p>
+    </div>
+</body>
+
+</html>

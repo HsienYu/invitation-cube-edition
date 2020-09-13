@@ -1,0 +1,22 @@
+{
+  "name": "invitation-cube-edition",
+  "version": "1.0.0",
+  "description": "invitation-cube-edition",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HsienYu/invitation-cube-edition.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HsienYu/invitation-cube-edition/issues"
+  },
+  "homepage": "https://github.com/HsienYu/invitation-cube-edition#readme",
+  "dependencies": {
+    "google-tts-api": "0.0.4"
+  }
+}
