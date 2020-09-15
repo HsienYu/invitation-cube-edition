@@ -5,6 +5,7 @@ s.boot;
 
 
 p = "/home/uglycat/Documents/GitRepos/invitation-cube-edition/temp.wav";
+
 b = Buffer.readChannel(s,p,2);
 
 
