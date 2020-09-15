@@ -1,11 +1,13 @@
-from gtts import gTTS
-import asyncio
-
-import aiohttp
-from aiohttp import ClientConnectorError
-from pytchat import LiveChatAsync
-from langdetect import detect
 from langdetect import DetectorFactory
+from langdetect import detect
+from pytchat import LiveChatAsync
+from aiohttp import ClientConnectorError
+import aiohttp
+import asyncio
+from gtts import gTTS
+from pydub import AudioSegment
+AudioSegment.converter = "/usr/bin/ffmpeg"
+
 DetectorFactory.seed = 0
 
 
@@ -26,6 +28,8 @@ class ChatFetcher:
                 lang = detect(text)
                 tts = gTTS(text, lang=lang)
                 tts.save('temp.mp3')
+                sound = AudioSegment.from_mp3("temp.mp3")
+                sound.export("temp.wav", format="wav")
 
             except BaseException as error:
                 print('An exception occurred: {}'.format(error))
