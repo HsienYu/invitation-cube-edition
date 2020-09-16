@@ -2,12 +2,12 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>{{myTitle}}</title>
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"
         media="screen" title="no title" charset="utf-8"> -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300,700,900' rel='stylesheet' type='text/css'> -->
-    <link rel="stylesheet" href="/static/style.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="/static/style.css" media="screen" title="no title" charset="utf-8" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="/static/index.js"></script>
     <script>
@@ -17,56 +17,103 @@
         var chatMessages_d = [];
         var chatMessages_e = [];
         var chatMessages_f = [];
-        var textObjs = ['', '', '', '', '', ''];
+        var textObjs = ["", "", "", "", "", ""];
 
         var refresh = function() {
             $.ajax({
                 type: "GET",
                 url: "http://127.0.0.1:8080/message",
-                dataType: 'JSON',
+                dataType: "JSON",
                 success: function(response) {
                     //console.log(typeof response["Ww-EClrbOrE"].datetime);
                     //document.getElementById('datetime').innerHTML = response["JVU1Q5GgGY0"].datetime;
                     //document.getElementById('name').innerHTML = response["JVU1Q5GgGY0"].author;
-                    if (typeof response["Ww-EClrbOrE"] === "object" || typeof response["Ww-EClrbOrE"] !== "undefined") {
-                        textObjs[0] = response["Ww-EClrbOrE"].datetime + " - " + response["Ww-EClrbOrE"].author + " : " + response["Ww-EClrbOrE"].message;
+                    if (
+                        typeof response["Ww-EClrbOrE"] === "object" ||
+                        typeof response["Ww-EClrbOrE"] !== "undefined"
+                    ) {
+                        textObjs[0] =
+                            response["Ww-EClrbOrE"].datetime +
+                            " - " +
+                            response["Ww-EClrbOrE"].author +
+                            " : " +
+                            response["Ww-EClrbOrE"].message;
                     } else {
                         textObjs[0] = "live chat is not available";
                     }
 
-                    if (typeof response["coYw-eVU0Ks"] === "object" || typeof response["coYw-eVU0Ks"] !== "undefined") {
-                        textObjs[1] = response["coYw-eVU0Ks"].datetime + " - " + response["coYw-eVU0Ks"].author + " : " + response["coYw-eVU0Ks"].message;
+                    if (
+                        typeof response["coYw-eVU0Ks"] === "object" ||
+                        typeof response["coYw-eVU0Ks"] !== "undefined"
+                    ) {
+                        textObjs[1] =
+                            response["coYw-eVU0Ks"].datetime +
+                            " - " +
+                            response["coYw-eVU0Ks"].author +
+                            " : " +
+                            response["coYw-eVU0Ks"].message;
                     } else {
                         textObjs[1] = "live chat is not available";
                     }
 
-                    if (typeof response["RaIJ767Bj_M"] === "object" || typeof response["RaIJ767Bj_M"] !== "undefined") {
-                        textObjs[2] = response["RaIJ767Bj_M"].datetime + " - " + response["RaIJ767Bj_M"].author + " : " + response["RaIJ767Bj_M"].message;
+                    if (
+                        typeof response["4ZVUmEUFwaY"] === "object" ||
+                        typeof response["4ZVUmEUFwaY"] !== "undefined"
+                    ) {
+                        textObjs[2] =
+                            response["4ZVUmEUFwaY"].datetime +
+                            " - " +
+                            response["4ZVUmEUFwaY"].author +
+                            " : " +
+                            response["4ZVUmEUFwaY"].message;
                     } else {
                         textObjs[2] = "live chat is not available";
                     }
 
-                    if (typeof response["Hu1FkdAOws0"] === "object" || typeof response["Hu1FkdAOws0"] !== "undefined") {
-                        textObjs[3] = response["Hu1FkdAOws0"].datetime + " - " + response["Hu1FkdAOws0"].author + " : " + response["Hu1FkdAOws0"].message;
+                    if (
+                        typeof response["XxJKnDLYZz4"] === "object" ||
+                        typeof response["XxJKnDLYZz4"] !== "undefined"
+                    ) {
+                        textObjs[3] =
+                            response["XxJKnDLYZz4"].datetime +
+                            " - " +
+                            response["XxJKnDLYZz4"].author +
+                            " : " +
+                            response["XxJKnDLYZz4"].message;
                     } else {
                         textObjs[3] = "live chat is not available";
                     }
 
-                    if (typeof response["4ZVUmEUFwaY"] === "object" || typeof response["4ZVUmEUFwaY"] !== "undefined") {
-                        textObjs[4] = response["4ZVUmEUFwaY"].datetime + " - " + response["4ZVUmEUFwaY"].author + " : " + response["4ZVUmEUFwaY"].message;
+                    if (
+                        typeof response["4ZVUmEUFwaY"] === "object" ||
+                        typeof response["4ZVUmEUFwaY"] !== "undefined"
+                    ) {
+                        textObjs[4] =
+                            response["4ZVUmEUFwaY"].datetime +
+                            " - " +
+                            response["4ZVUmEUFwaY"].author +
+                            " : " +
+                            response["4ZVUmEUFwaY"].message;
                     } else {
                         textObjs[4] = "live chat is not available";
                     }
 
-                    if (typeof response["NMre6IAAAiU"] === "object" || typeof response["NMre6IAAAiU"] !== "undefined") {
-                        textObjs[5] = response["NMre6IAAAiU"].datetime + " - " + response["NMre6IAAAiU"].author + " : " + response["NMre6IAAAiU"].message;
+                    if (
+                        typeof response["NMre6IAAAiU"] === "object" ||
+                        typeof response["NMre6IAAAiU"] !== "undefined"
+                    ) {
+                        textObjs[5] =
+                            response["NMre6IAAAiU"].datetime +
+                            " - " +
+                            response["NMre6IAAAiU"].author +
+                            " : " +
+                            response["NMre6IAAAiU"].message;
                     } else {
                         textObjs[5] = "live chat is not available";
                     }
-
                 },
-            })
-        }
+            });
+        };
         setInterval("refresh()", 1000);
 
         $(document).ready(function() {
@@ -165,7 +212,9 @@
     </div>
 
     <div id="mobile-message">
-        <p>This project is not optimised for mobile. Please visit this link on your desktop.</p>
+        <p>
+            This project is not optimised for mobile. Please visit this link on your desktop.
+        </p>
     </div>
 </body>
 
